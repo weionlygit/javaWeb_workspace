@@ -33,7 +33,7 @@ public class EmpShow extends HttpServlet {
         List<Emp> empList = empMapper.listEmp();
 //      将集合绑定到req上
         req.setAttribute("emplist",empList);
-//        转发
+//       刷新页面 转发
         req.getRequestDispatcher("emplist.jsp").forward(req,resp);
 
 //        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(this.getClass()
