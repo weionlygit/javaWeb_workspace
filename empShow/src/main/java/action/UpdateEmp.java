@@ -24,6 +24,9 @@ public class UpdateEmp extends HttpServlet{
         SqlSession sqlSession = Sqlsession.getSqlSession(true);
         EmpMapper empMapper = sqlSession.getMapper(EmpMapper.class);
         empMapper.updateEmp(new Emp(id,name,salary,job));
+//        测试
+//        System.out.println(id);
+//        System.out.println(name);
 
         resp.sendRedirect("emplist");
     }
