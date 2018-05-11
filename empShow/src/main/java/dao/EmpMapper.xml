@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.EmpMapper">
+    <select id="listEmp" resultType="entity.Emp">
+        SELECT  * from emplist;
+    </select>
+    <insert id="saveEmp">
+        insert into emplist values (null,#{emp.name},#{emp.salary},#{emp.job});
+    </insert>
+    <delete id="deleteEmp">
+        delete from emplist where id = #{id};
+    </delete>
+
+    <!--更新前先把数据显示进去-->
+    <select id="selectEmpById" resultType="entity.Emp">
+        select * from emplist where id=#{id};
+    </select>
+
+    <update id="updateEmp">
+        update emplist set name=#{emp.name},salary=#{emp.salary},job=#{emp.job} where id=#{emp.id};
+    </update>
+</mapper>
