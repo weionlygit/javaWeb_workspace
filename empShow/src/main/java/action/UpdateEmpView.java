@@ -21,8 +21,8 @@ public class UpdateEmpView extends HttpServlet {
         SqlSession sqlSession = Sqlsession.getSqlSession(true);
         EmpMapper empMapper = sqlSession.getMapper(EmpMapper.class);
         Emp emp= empMapper.selectEmpById(id);
-
-        System.out.println(emp);
+//          测试
+//        System.out.println(emp);
         req.setAttribute("empClick",emp);
         req.getRequestDispatcher("updateEmp.jsp").forward(req,resp);
     }

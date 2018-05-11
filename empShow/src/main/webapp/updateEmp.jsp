@@ -3,6 +3,7 @@
 <%@ page import="dao.EmpMapper" %>
 <%@ page import="org.apache.ibatis.session.SqlSession" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -48,17 +49,17 @@
                         <%--</td>--%>
                     <%--</tr>--%>
 
-                        <%
-                            Emp emp= (Emp) request.getAttribute("empClick");
-                        %>
-                        <input type="hidden" value="
-                           <%out.print(emp.getId());%>" name="id">
+                        <%--<%--%>
+                            <%--Emp emp= (Emp) request.getAttribute("empClick");--%>
+                        <%--%>--%>
+<%--这里的empClic是updateEmpView找到后传过来的数据  在request中 ${}里面的内容就是要去查找到东西--%>
+                        <input type="hidden" value="${empClick.id}" name="id">
                     <tr>
                         <td valign="middle" align="right">
                             Name:
                         </td>
                         <td valign="middle" align="left">
-                            <input type="text" class="inputgri" name="name" value="<%out.print(emp.getName());%>"/>
+                            <input type="text" class="inputgri" name="name" value="${empClick.name}"/>
                         </td>
                     </tr>
                     <tr>
@@ -66,7 +67,7 @@
                             Salary:
                         </td>
                         <td valign="middle" align="left">
-                            <input type="text" class="inputgri" name="salary" value="<%out.print(emp.getSalary());%>"/>
+                            <input type="text" class="inputgri" name="salary" value="${empClick.salary}"/>
                         </td>
                     </tr>
                     <tr>
@@ -74,7 +75,7 @@
                             Job:
                         </td>
                         <td valign="middle" align="left">
-                            <input type="text" class="inputgri" name="job" value="<%out.print(emp.getJob());%>"/>
+                            <input type="text" class="inputgri" name="job" value="${empClick.job}"/>
                         </td>
                     </tr>
                 </table>
