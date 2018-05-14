@@ -8,7 +8,7 @@
 
     <script>
         var boo=true;
-        var time=5;
+        var time=20;
         var inter;
         function change(){
             if(boo){
@@ -16,16 +16,15 @@
                 document.getElementById("time").innerHTML=--time;
                 inter = setInterval(function () {
                     document.getElementById("time").innerHTML=--time;
-                    if(time==0){
-                        clearInterval(inter);
-                        document.getElementById("time").innerHTML="";
-                        boo=true;
-                        time=5;
-                    }
-                },1000)
+                        if(time==0){
+                            clearInterval(inter);
+                            document.getElementById("time").innerHTML="";
+                            boo=true;
+                            time=20;
+                        }
+                    },1000);
                 boo=false;
             }
-
         }
     </script>
 </head>
@@ -105,7 +104,7 @@
                             <img id="num" src="image" />
                             <span id="time"></span>
                             <%--换一张验证码功能--%>
-                            <a href="javascript:;" id="picChange" onchange="change()">换一张</a>
+                            <a href="javascript:;" onclick="change()">换一张</a>
                         </td>
                         <td valign="middle" align="left">
                             <input type="text" class="inputgri" name="number" />
