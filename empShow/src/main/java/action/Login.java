@@ -31,12 +31,12 @@ public class Login extends HttpServlet{
 
             //放在这里面
             HttpSession httpSession = req.getSession();
-            httpSession.setMaxInactiveInterval(5);
+            httpSession.setMaxInactiveInterval(200);
             httpSession.setAttribute("user",user);
 //          数据存在cookie里
             Cookie myCookie= new Cookie("username",user.getName());
 //            存30分钟
-            myCookie.setMaxAge(60*30);
+            myCookie.setMaxAge(60);
             resp.addCookie(myCookie);
 
             resp.sendRedirect("emplist");

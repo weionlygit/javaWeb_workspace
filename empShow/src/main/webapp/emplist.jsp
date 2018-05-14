@@ -23,9 +23,11 @@
                     <%--%>--%>
                     <c:if test="${sessionScope.user!=null}" var="boo">
                         ${user.name}
+                        <a href="exit">exit</a>
                     </c:if>
                     <c:if test="${!boo}">
-                        <span>请登录</span>
+                        <%--这个其实就看不见，没登录这个页面过不来--%>
+                        <span>plase login</span>
                     </c:if>
 
                     <%--<%--%>
