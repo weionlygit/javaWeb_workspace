@@ -27,7 +27,7 @@ public class EmpFilter implements Filter {
         HttpServletRequest request =(HttpServletRequest) servletRequest;
         String uri= request.getRequestURI();
         if(uri.endsWith("regist")||uri.endsWith(".jsp")||uri.endsWith(".css")
-                ||uri.endsWith(".gif")||uri.endsWith("loginpp")){
+                ||uri.endsWith(".gif")||uri.endsWith("loginpp")||uri.endsWith("image")){
             filterChain.doFilter(servletRequest,servletResponse);
         }else{
             HttpSession httpSession = request.getSession();
