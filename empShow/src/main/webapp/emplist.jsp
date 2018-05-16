@@ -1,6 +1,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="entity.Emp" %>
 <%@ page import="entity.User" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -15,15 +16,10 @@
         <div id="header">
             <div id="rightheader">
                 <p>
-                    <%--<%--%>
-                        <%--User user = (User) session.getAttribute("user");--%>
-                        <%--if(user!=null){--%>
-                            <%--out.print(user.getName());--%>
-                        <%--}else{--%>
-                    <%--%>--%>
                     <c:if test="${sessionScope.user!=null}" var="boo">
+                        <img src="${user.img_path}" width="30px" height="28px">
                         ${user.name}
-                        <a href="exit">exit</a>
+                        <a href="exit">退出</a>
                     </c:if>
                     <c:if test="${!boo}">
                         <%--这个其实就看不见，没登录这个页面过不来--%>
@@ -35,6 +31,7 @@
                     <%--%>--%>
                     <br />
                 </p>
+
             </div>
             <div id="topheader">
                 <h1 id="title">
