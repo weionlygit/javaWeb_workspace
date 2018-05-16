@@ -1,10 +1,33 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE >
 <html>
 <head>
     <title>login</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" type="text/css"
           href="css/style2.css" />
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script>
+        function login(){
+
+            var nameW= $("[name='name']").val();
+            var pwdQ= $("[name='pwd']").val();
+            $.ajax({
+                "url":"loginpp",
+                "type":"post",
+                "data":"username="+nameW+"&password="+pwdQ,
+                "success":function (data) {
+                    //网络传输会添加乱七八糟，去掉 用户名也可以用这个
+                    data =data.trim();
+                    if(data=="true"){
+                        location.href="emplist";
+                    }else{
+                        alert("密码错误或用户名不存在");
+                    }
+                }
+            });
+        }
+    </script>
 </head>
 
 <body>
@@ -39,7 +62,7 @@
                             username:
                         </td>
                         <td valign="middle" align="left">
-                            <input type="text" class="inputgri" name="name" />
+                            <input type="text" class="inputgri" name="name" id="nameWei" />
                         </td>
                     </tr>
                     <tr>
@@ -47,12 +70,13 @@
                             password:
                         </td>
                         <td valign="middle" align="left">
-                            <input type="password" class="inputgri" name="pwd" />
+                            <input type="password" class="inputgri" name="pwd" id="passPeng"/>
                         </td>
                     </tr>
                 </table>
                 <p>
-                    <input type="submit" class="button" value="Submit &raquo;" />
+                    <input type="button" class="button" value="Submit &raquo;" onclick="login()" />
+                    <a href="regist.jsp">注册</a>
                 </p>
             </form>
         </div>

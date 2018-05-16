@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.util.List;
 import java.util.UUID;
-//-----------------------------------可以 获取  还没理解
+//-----------------------------------可以 获取  还没理解  这个在注册里写  这里就用不到了
 @WebServlet(urlPatterns = {"/filePic"})
 public class FilePic extends HttpServlet{
     @Override

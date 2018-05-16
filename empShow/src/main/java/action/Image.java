@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -35,8 +36,13 @@ public class Image extends HttpServlet {
         }
         g.drawString(code,15,15);
 
+//        把生成的验证码存到session
+        HttpSession httpSession = req.getSession();
+        httpSession.setAttribute("authCode",code);
+
+
 //        添加删除线，防止获取图片数字 起点坐标 终点坐标
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 1; i++) {
             g.drawLine(r.nextInt(60),r.nextInt(20),r.nextInt(60),r.nextInt(20));
         }
 
