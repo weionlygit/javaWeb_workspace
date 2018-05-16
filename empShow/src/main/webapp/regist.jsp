@@ -127,12 +127,24 @@
 
         }
 
+        function checkImg(){
+            var path=$("[name='file']").val();
+            var suffix=path.substring(path.indexOf("."));
+            if(suffix==".jpg") {
+                //    图片预览
+                var img = document.getElementById("imgHead").files[0];
+                var reader = new FileReader();
+                reader.readAsDataURL(img);
+                reader.onload = function () {
+                    $("#weimg").attr("src", this.result);
+                }
+            }else{
+                $("#imgWarn").html("只支持jpg").css("color","red");
+            }
+
+        }
 
         function isSub(){
-            // alert(usernamewe);
-            // alert(passwordwe);
-            // alert(passwordAgainwe);
-            // alert(authcodewe);
             if(usernamewe==true&&passwordwe==true&&passwordAgainwe==true&&authcodewe==true){
                 $("#subCir").removeAttr("disabled");
             }
@@ -164,7 +176,7 @@
             <h1>
                 注册
             </h1>
-            <form action="login.jsp" method="post">
+            <form action="addUser" method="post" enctype="multipart/form-data">
                 <table cellpadding="0" cellspacing="0" border="0"
                        class="form_table">
                     <tr>
@@ -207,9 +219,9 @@
                         </td>
                         <td valign="middle" align="left">
                             男
-                            <input type="radio" class="inputgri" name="sex" value="m" checked="checked"/>
+                            <input type="radio" class="inputgri" name="sex" value="男" checked="checked"/>
                             女
-                            <input type="radio" class="inputgri" name="sex" value="f"/>
+                            <input type="radio" class="inputgri" name="sex" value="女"/>
                         </td>
                     </tr>
 
@@ -227,24 +239,27 @@
                         </td>
                     </tr>
 
-                    <%--<tr>--%>
-                        <%--<td valign="middle" align="right">--%>
-                            <%--头像上传:--%>
-                            <%--<input type="file" name="file">--%>
-                            <%--<input type="submit" value="确定">--%>
-                        <%--</td>--%>
-                    <%--</tr>--%>
+                    <tr>
+                        <td valign="middle" align="right">
+                            头像上传:
+                        </td>
+                        <td>
+                            <input type="file" name="file" onchange="checkImg()" id="imgHead">
+                            <span id="imgWarn"></span>
+                            <img src="" alt="头像上传" id="weimg" width="40px" height="55px" border="#FDFDFD solid 1px">
+                        </td>
+                    </tr>
                 </table>
                 <p>
                     <input type="submit" class="button" value="Submit &raquo;" disabled="disabled" id="subCir"/>
                 </p>
             </form>
 <%--可以执行同一个过滤器   action="register"--%>
-            <form action="filePic" method="post" enctype="multipart/form-data">
-                头像上传：
-                <input type="file" name="file">
-                <input type="submit" value="确定">
-            </form>
+            <%--<form action="filePic" method="post" enctype="multipart/form-data">--%>
+                <%--头像上传：--%>
+                <%--<input type="file" name="file">--%>
+                <%--<input type="submit" value="确定">--%>
+            <%--</form>--%>
 
         </div>
     </div>
